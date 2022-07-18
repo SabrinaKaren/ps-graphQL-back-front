@@ -5,11 +5,22 @@ import { Injectable } from '@angular/core';
 })
 export class ContextService {
 
+  readonly STORAGE_ITEM = 'elo-ps-user';
+
   constructor() { }
 
-  getUserData(): any {
-    let user: any = window.sessionStorage.getItem('elo-ps-user');
+  saveUserData(user: UserModel) {
+    window.sessionStorage.setItem(this.STORAGE_ITEM, JSON.stringify(user));
+  }
+
+  getUserData(): UserModel | undefined {
+    let user: any = window.sessionStorage.getItem(this.STORAGE_ITEM);
     return user ? JSON.parse(user) : undefined;
   }
 
+}
+
+export interface UserModel {
+  name: string;
+  profile: string;
 }

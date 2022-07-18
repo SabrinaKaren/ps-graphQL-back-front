@@ -1,4 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+:root{
+    --primary-color: #272727;
+    --secondary-color: #1822DC;
+    --tertiary-color: #A5A7B0;
+    --green-color: #D9FBD6;
+    --red-color: #FFC3BB;
+    --orange-color: #FFDEBD;
+    --purple-color: #E6D4F4;
+    --blue-color: #C9DCF2;
+}

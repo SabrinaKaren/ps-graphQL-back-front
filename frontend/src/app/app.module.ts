@@ -8,13 +8,15 @@ import { MaterialModule } from 'src/material.module';
 import { PageCandidatesComponent } from './pages/candidates/page-candidates.component';
 import { PageEvaluationsComponent } from './pages/evaluations/page-evaluations.component';
 import { PageUnauthorizedComponent } from './pages/unauthorized/page-unauthorized.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageCandidatesComponent,
     PageEvaluationsComponent,
-    PageUnauthorizedComponent
+    PageUnauthorizedComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

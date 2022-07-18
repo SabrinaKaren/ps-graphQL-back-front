@@ -1,20 +1,38 @@
 <div>
   
-  <mat-toolbar class="example-header">Header</mat-toolbar>
+  <!-- header -->
+  <app-header></app-header>
   
-  <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
-                  [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
-                  [fixedBottomGap]="options.value.bottom">
-      {{options.value.fixed ? 'Fixed' : 'Non-fixed'}} Sidenav
+  <mat-sidenav-container class="sidenav-custom-container">
+
+    <!-- sidebar -->
+    <mat-sidenav
+      #sidenav
+      id="sidenav"
+      class="sidenav-custom"
+      mode="side"
+      opened
+    >
+      <nav>
+        <ul>
+          <li *ngIf="userProfile && userProfile === PROFILE_PC">
+            <a routerLink="candidatos">Candidatos</a>
+          </li>
+          <li *ngIf="userProfile && (userProfile === PROFILE_PC || userProfile === PROFILE_AVALIADOR)">
+            <a routerLink="avaliacoes">Avaliações</a>
+          </li>
+        </ul>
+      </nav>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <!-- menu content -->
+    <mat-sidenav-content class="sidenav-custom-content">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 
   </mat-sidenav-container>
 
-  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+  <!-- footer -->
+  <mat-toolbar class="footer"></mat-toolbar>
 
 </div>

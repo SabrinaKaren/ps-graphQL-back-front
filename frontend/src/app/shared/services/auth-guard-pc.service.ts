@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { ContextService } from './context.service';
+import { PROFILE_AVALIADOR, PROFILE_PC } from '../consts/profiles.consts';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class AuthGuardPCService implements CanActivate {
     let userData = this.context.getUserData();
     if (userData) {
       const profile = userData.profile;
-      if (profile == 'P&C') return true;
-      else if (profile == 'AVALIADOR') this.router.navigate(['avaliacoes']);
+      if (profile == PROFILE_PC) return true;
+      else if (profile == PROFILE_AVALIADOR) this.router.navigate(['avaliacoes']);
     }
     this.router.navigate(['unauthorized']);
     return false;

@@ -1,5 +1,6 @@
+import { ContextService } from './shared/services/context.service';
 import { Component } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import { PROFILE_AVALIADOR, PROFILE_PC } from '../app/shared/consts/profiles.consts';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,21 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
-  options = this._formBuilder.group({
-    bottom: 0,
-    fixed: false,
-    top: 0,
-  });
 
-  constructor(private _formBuilder: FormBuilder) {}
+  userProfile?: string;
+
+  readonly PROFILE_AVALIADOR = PROFILE_AVALIADOR;
+  readonly PROFILE_PC = PROFILE_PC;
+
+  constructor(
+    private context: ContextService
+  ) {
+    this.context.saveUserData({
+      name: 'Raquel',
+      profile: PROFILE_PC
+    });
+
+    this.userProfile = this.context.getUserData()?.profile;
+  }
 
 }
