@@ -1,0 +1,14 @@
+@import '../../shared/css/styles-custom.scss';
+
+.card-header-danger {
+    background: linear-gradient(60deg, var(--blue-color), var(--tertiary-color)) !important;
+}
+
+.card-title {
+    color: var(--primary-color) !important;
+    font-weight: 400 !important;
+}
+
+.text-primary {
+    color: var(--secondary-color) !important;
+}

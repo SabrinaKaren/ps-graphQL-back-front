@@ -1,9 +1,10 @@
 .sidenav-custom-container {
   position: absolute;
   top: 60px;
-  bottom: 60px;
+  bottom: 0;
   left: 0;
   right: 0;
+  padding-bottom: 50px;
 }
 
 .sidenav-custom {
@@ -12,13 +13,6 @@
   justify-content: center;
   width: 200px;
   background: var(--tertiary-color);
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 #sidenav ul {
@@ -32,6 +26,9 @@
 
 #sidenav li a {
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   padding: 10px;
   margin-top: 10px;
   text-decoration: none;
@@ -46,5 +43,13 @@
 }
 
 .sidenav-custom-content {
-  padding: 30px;
+  padding: 50px 30px;
+  background-color: #A5A7B025;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

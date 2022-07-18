@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PageEvaluationsComponent } from './page-evaluations.component';
 
 describe('PageEvaluationsComponent', () => {
+
   let component: PageEvaluationsComponent;
   let fixture: ComponentFixture<PageEvaluationsComponent>;
 
@@ -22,4 +22,5 @@ describe('PageEvaluationsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

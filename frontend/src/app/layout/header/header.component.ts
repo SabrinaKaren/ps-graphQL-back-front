@@ -1,5 +1,6 @@
 import { ContextService } from './../../shared/services/context.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
   userProfile: string = '-';
 
   constructor(
-    private context: ContextService
+    private context: ContextService,
+    private router: Router
   ) {
     let userData = this.context.getUserData();
     if (userData) {
@@ -22,5 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  home(): void {
+    this.router.navigate(['']);
+  }
 
 }

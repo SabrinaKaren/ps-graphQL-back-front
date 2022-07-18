@@ -16,10 +16,16 @@
       <nav>
         <ul>
           <li *ngIf="userProfile && userProfile === PROFILE_PC">
-            <a routerLink="candidatos">Candidatos</a>
+            <a routerLink="candidatos">
+              <mat-icon aria-hidden="false">emoji_people</mat-icon>
+              Candidatos
+            </a>
           </li>
           <li *ngIf="userProfile && (userProfile === PROFILE_PC || userProfile === PROFILE_AVALIADOR)">
-            <a routerLink="avaliacoes">Avaliações</a>
+            <a routerLink="avaliacoes">
+              <mat-icon aria-hidden="false">assignment</mat-icon>
+              Avaliações
+            </a>
           </li>
         </ul>
       </nav>
@@ -33,6 +39,6 @@
   </mat-sidenav-container>
 
   <!-- footer -->
-  <mat-toolbar class="footer"></mat-toolbar>
+  <!-- <mat-toolbar class="footer"></mat-toolbar> -->
 
 </div>
