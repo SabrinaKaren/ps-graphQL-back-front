@@ -1,0 +1,20 @@
+<div>
+  
+  <mat-toolbar class="example-header">Header</mat-toolbar>
+  
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+                  [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                  [fixedBottomGap]="options.value.bottom">
+      {{options.value.fixed ? 'Fixed' : 'Non-fixed'}} Sidenav
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+
+</div>
