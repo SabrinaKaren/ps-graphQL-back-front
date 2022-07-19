@@ -1,0 +1,14 @@
+version: "1"
+services:
+
+  # DATABASE
+  ps-db:
+    image: postgres
+    container_name: ps-db
+    restart: always
+    environment:
+      - POSTGRES_DB=ps-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=YgwpSgX
+    ports:
+      - 5432:5432
