@@ -13,7 +13,7 @@ public class CandidatoModel {
     private String nome;
     private String cpf;
     private String email;
-    private Date dateOfBirth;
+    private Date dataNascimento;
     private String cidade;
     private String curriculo;
     private String linkRepositorio;

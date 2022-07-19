@@ -10,39 +10,29 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="text-primary">
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Country
-                                </th>
-                                <th>
-                                    City
-                                </th>
-                                <th>
-                                    Salary
-                                </th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>E-mail</th>
+                                <th>Data nasc.</th>
+                                <th>Cidade</th>
+                                <th>Currículo</th>
+                                <th>Repositório</th>
+                                <th>Status</th>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let item of data">
+                                    <td>{{item.nome ?? '-'}}</td>
+                                    <td>{{item.cpf ?? '-'}}</td>
+                                    <td>{{item.email ?? '-'}}</td>
+                                    <td>{{item.dataNascimento ?? '-'}}</td>
+                                    <td>{{item.cidade ?? '-'}}</td>
+                                    <td>{{item.curriculo ?? '-'}}</td>
                                     <td>
-                                        1
+                                        <a href={{item.linkRepositorio}} target="_blank" class="link-repositorio">
+                                            <mat-icon aria-hidden="false">open_in_new</mat-icon>
+                                        </a>
                                     </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Oud-Turnhout
-                                    </td>
-                                    <td>
-                                        $36,738
-                                    </td>
+                                    <td>{{item.status ?? '-'}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -51,4 +41,4 @@
             </div>
         </div>
     </div>
-</div>  
+</div>

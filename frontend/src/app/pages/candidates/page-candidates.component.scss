@@ -12,3 +12,11 @@
 .text-primary {
     color: var(--secondary-color) !important;
 }
+
+.link-repositorio {
+    color: var(--primary-color);
+}
+
+.link-repositorio:hover {
+    color: var(--secondary-color);
+}

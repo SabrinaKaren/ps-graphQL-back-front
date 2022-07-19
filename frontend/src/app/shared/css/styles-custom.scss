@@ -15388,3 +15388,41 @@ Copyright (c) 2015 Daniel Eden
 
 .ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
   background-color: #999; }
+
+.field-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.5em 0 1em 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--tertiary-color);
+}
+
+.mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
+  background: linear-gradient(60deg, var(--primary-color), var(--tertiary-color)) !important;
+  color: #fff;
+}
+
+.error-snackbar {
+  background: #d81331;
+  color: #fff;
+}
+
+.warn-snackbar {
+  background: #d6c50a;
+  color: #fff;
+}
+
+.success-snackbar {
+  background: #4b9b33;
+  color: #fff;
+}
+
+.mat-simple-snackbar-action {
+  color: #fff;
+}

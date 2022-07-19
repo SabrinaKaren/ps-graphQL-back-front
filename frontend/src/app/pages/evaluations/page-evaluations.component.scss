@@ -1,0 +1,30 @@
+@import '../../shared/css/styles-custom.scss';
+
+.card-header-danger {
+    background: linear-gradient(60deg, var(--blue-color), var(--tertiary-color)) !important;
+}
+
+.card-title {
+    color: var(--primary-color) !important;
+    font-weight: 400 !important;
+}
+
+.text-primary {
+    color: var(--secondary-color) !important;
+}
+
+.link-repositorio {
+    color: var(--primary-color);
+}
+
+.link-repositorio:hover {
+    color: var(--secondary-color);
+}
+
+#evaluation-card-body {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.03rem;
+    margin: 20px 0;
+    align-items: center;
+}
