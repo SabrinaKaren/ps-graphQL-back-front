@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.sabrina.processoseletivo.entities.CandidatoEntity;
 import com.sabrina.processoseletivo.models.CandidatoModel;
+import com.sabrina.processoseletivo.models.CandidatoSimplifiedModel;
 import com.sabrina.processoseletivo.repositories.CandidatoRepository;
 
 @Service
@@ -25,6 +26,17 @@ public class CandidatoService {
         });
 
         return candidatesModel;
+    }
+
+    public List<CandidatoSimplifiedModel> getCandidatesSimplified() {
+        List<CandidatoSimplifiedModel> candidatesSimplifiedModel = new ArrayList<>();
+
+        List<CandidatoEntity> candidatesDb = repository.findAll();
+        candidatesDb.forEach(candidate -> {
+            candidatesSimplifiedModel.add(CandidatoSimplifiedModel.of(candidate));
+        });
+
+        return candidatesSimplifiedModel;
     }
     
 }

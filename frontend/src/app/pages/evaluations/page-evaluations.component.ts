@@ -53,12 +53,7 @@ export class PageEvaluationsComponent implements OnInit {
 
   getCandidates(): void {
 
-    // this.http.get('http://localhost:9000/api/candidate').subscribe({
-
-    of([
-      { id: "cccc-1111", nome: "Sabrina" },
-      { id: "cccc-2222", nome: "Pereira" }
-    ]).pipe(delay(1000)).subscribe({
+    this.http.get('http://localhost:9000/api/candidate/simplified').subscribe({
       next: (response: any) => {
         this.candidatesList = response.map((item: any) => {
           return { key: item.id, value: item.nome }
@@ -74,13 +69,7 @@ export class PageEvaluationsComponent implements OnInit {
 
   getStatus(): void {
 
-    // this.http.get('http://localhost:9000/api/status').subscribe({
-
-    of([
-      { id: "ssss-1111", nome: "Entrevista" },
-      { id: "ssss-2222", nome: "Stand by" },
-      { id: "ssss-3333", nome: "Reprovado" }
-    ]).pipe(delay(1000)).subscribe({
+    this.http.get('http://localhost:9000/api/status/simplified').subscribe({
       next: (response: any) => {
         this.statusList = response.map((item: any) => {
           return { key: item.id, value: item.nome }

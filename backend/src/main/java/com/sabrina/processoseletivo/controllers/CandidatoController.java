@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sabrina.processoseletivo.models.CandidatoModel;
+import com.sabrina.processoseletivo.models.CandidatoSimplifiedModel;
 import com.sabrina.processoseletivo.services.CandidatoService;
 
 @RestController
@@ -20,9 +21,14 @@ public class CandidatoController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<CandidatoModel>> getAllCandidates() {
         return ResponseEntity.ok(service.getAllCandidates());
+    }
+
+    @GetMapping("/simplified")
+    public ResponseEntity<List<CandidatoSimplifiedModel>> getCandidatesSimplified() {
+        return ResponseEntity.ok(service.getCandidatesSimplified());
     }
     
 }

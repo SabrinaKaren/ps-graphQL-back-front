@@ -10,7 +10,7 @@ CREATE SEQUENCE hibernate_sequence
 CREATE TABLE IF NOT EXISTS status
 (
     id uuid NOT NULL,
-	name varchar(255) NOT NULL,
+	nome varchar(255) NOT NULL,
     updated_on timestamp with time zone NOT NULL,
     removed_on timestamp with time zone,
     CONSTRAINT status_pkey PRIMARY KEY (id)

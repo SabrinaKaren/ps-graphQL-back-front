@@ -19,7 +19,7 @@ export class PageCandidatesComponent implements OnInit {
   }
 
   getAllCandidates(): void {
-    this.http.get('http://localhost:9000/api/candidate').subscribe({
+    this.http.get('http://localhost:9000/api/candidate/all').subscribe({
       next: (response: any) => {
         this.data = response;
       },
