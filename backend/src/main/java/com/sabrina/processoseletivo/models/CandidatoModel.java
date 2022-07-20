@@ -17,7 +17,7 @@ public class CandidatoModel {
     private String cidade;
     private String curriculo;
     private String linkRepositorio;
-    private UUID status;
+    private String status;
     private Date updatedOn;
     private Date removedOn;
 

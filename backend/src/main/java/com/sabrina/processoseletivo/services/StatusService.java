@@ -19,7 +19,7 @@ public class StatusService {
     public List<StatusSimplifiedModel> getStatusSimplified() {
         List<StatusSimplifiedModel> statusSimplifiedModel = new ArrayList<>();
 
-        List<StatusEntity> statusDb = repository.findAll();
+        List<StatusEntity> statusDb = repository.findByRemovedOnIsNull();
         statusDb.forEach(status -> {
             statusSimplifiedModel.add(StatusSimplifiedModel.of(status));
         });
