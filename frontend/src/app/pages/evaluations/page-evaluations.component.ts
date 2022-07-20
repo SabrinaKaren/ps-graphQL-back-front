@@ -4,6 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { delay, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-page-evaluations',
@@ -16,14 +17,19 @@ export class PageEvaluationsComponent implements OnInit {
   candidatesList?: MapModel[];
   statusList?: MapModel[];
 
-  selectedCandidate?: MapModel;
-  selectedStatus?: MapModel;
+  form: FormGroup = new FormGroup({
+    selectedCandidate: new FormControl('', [Validators.required]),
+    selectedStatus: new FormControl('', [Validators.required])
+  });
+  saved: boolean = false;
 
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
     private router: Router
-  ) { }
+  ) {
+    this.form.disable();
+  }
 
   ngOnInit(): void {
     this.getCandidates();
@@ -52,7 +58,7 @@ export class PageEvaluationsComponent implements OnInit {
     of([
       { id: "cccc-1111", nome: "Sabrina" },
       { id: "cccc-2222", nome: "Pereira" }
-    ]).pipe(delay(300)).subscribe({
+    ]).pipe(delay(1000)).subscribe({
       next: (response: any) => {
         this.candidatesList = response.map((item: any) => {
           return { key: item.id, value: item.nome }
@@ -61,6 +67,7 @@ export class PageEvaluationsComponent implements OnInit {
       error: (err) => {
         console.error(err);
       },
+      complete: () => this.form.enable()
     });
 
   }
@@ -73,7 +80,7 @@ export class PageEvaluationsComponent implements OnInit {
       { id: "ssss-1111", nome: "Entrevista" },
       { id: "ssss-2222", nome: "Stand by" },
       { id: "ssss-3333", nome: "Reprovado" }
-    ]).pipe(delay(300)).subscribe({
+    ]).pipe(delay(1000)).subscribe({
       next: (response: any) => {
         this.statusList = response.map((item: any) => {
           return { key: item.id, value: item.nome }
@@ -82,6 +89,7 @@ export class PageEvaluationsComponent implements OnInit {
       error: (err) => {
         console.error(err);
       },
+      complete: () => this.form.enable()
     });
 
   }
@@ -91,11 +99,12 @@ export class PageEvaluationsComponent implements OnInit {
   //******************************************************
 
   register(): void {
-    if (this.selectedCandidate && this.selectedStatus) {
+    if (this.form.valid) {
 
-      console.log(`Registrar candidato ${this.selectedCandidate} com status ${this.selectedStatus}.`);
+      this.form.disable();
+      console.log(`Registrar candidato ${this.form.get('selectedCandidate')?.value} com status ${this.form.get('selectedStatus')?.value}.`);
 
-      of({}).pipe(delay(300)).subscribe({
+      of({}).pipe(delay(1000)).subscribe({
         next: () => {
           this.openSnackBar({
             message: 'Avaliação registrada com sucesso!',
@@ -103,10 +112,18 @@ export class PageEvaluationsComponent implements OnInit {
             actionText: 'Finalizar',
             duration: undefined
           });
+          this.saved = true;
         },
         error: (err) => {
           console.error(err);
-        },
+          this.openSnackBar({
+            message: 'Ocorreu um erro ao tentar registrar a avaliação!',
+            type: 'error',
+            actionText: undefined,
+            duration: 5000
+          });
+          this.form.enable();
+        }
       });
 
     } else {

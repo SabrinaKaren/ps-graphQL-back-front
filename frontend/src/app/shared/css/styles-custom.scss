@@ -15408,6 +15408,11 @@ Copyright (c) 2015 Daniel Eden
   color: #fff;
 }
 
+.mat-raised-button.mat-button-disabled.mat-button-disabled {
+  background: #c0c0c0 !important;
+  color: #555;
+}
+
 .error-snackbar {
   background: #d81331;
   color: #fff;
@@ -15425,4 +15430,8 @@ Copyright (c) 2015 Daniel Eden
 
 .mat-simple-snackbar-action {
   color: #fff;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--secondary-color);
 }

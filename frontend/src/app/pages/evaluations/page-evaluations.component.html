@@ -6,13 +6,13 @@
                     <h4 class="card-title">Avaliar</h4>
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
-                <div id="evaluation-card-body" class="card-body">
+                <form id="evaluation-card-body" class="card-body" [formGroup]="form">
 
                     <!-- Candidato -->
                     <div class="field-custom">
                         <mat-label><b>Candidato</b></mat-label>
                         <mat-form-field appearance="outline" floatLabel="never">
-                            <mat-select [(ngModel)]="selectedCandidate" name="candidate">
+                            <mat-select formControlName="selectedCandidate" name="candidate">
                                 <mat-option *ngFor="let candidate of candidatesList" [value]="candidate.key">
                                     {{candidate.value}}
                                 </mat-option>
@@ -24,7 +24,7 @@
                     <div class="field-custom">
                         <mat-label><b>Status</b></mat-label>
                         <mat-form-field appearance="outline">
-                            <mat-select [(ngModel)]="selectedStatus" name="status">
+                            <mat-select formControlName="selectedStatus" name="status">
                                 <mat-option *ngFor="let status of statusList" [value]="status.key">
                                     {{status.value}}
                                 </mat-option>
@@ -32,11 +32,10 @@
                         </mat-form-field>
                     </div>
 
-                    <div>
-                        <button mat-raised-button (click)="register()">Registrar</button>
-                    </div>
+                    <button mat-raised-button (click)="register()" disabled={{form.disabled}}>Registrar</button>
+                    <mat-spinner *ngIf="form.disabled && !saved" diameter="50"></mat-spinner>
 
-                </div>
+                </form>
             </div>
         </div>
     </div>
