@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --ext js,graphql"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server": "^3.10.0",
+    "graphql": "^14.2.1",
+    "graphql-import": "^0.7.1",
     "knex": "^2.2.0",
     "pg": "^8.7.3",
     "postgres": "^3.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

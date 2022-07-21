@@ -8,7 +8,16 @@
 -- *                        Passos                     *
 -- *****************************************************
 - npm init --y == cria o arquivo json dentro da nossa pasta
-- npm i -s knex postgres
+
+-- Dependencias:
+- npm i apollo-server
+- npm i graphql
+- "graphql-import": "^0.7.1"
+- npm i -s knex
+- npm i -s postgres
+- npm i -s pg
+- npm install nodemon --save-dev
+
 - npx knex init (para eu não precisar instalar o knex de forma global na maquina, preciso usar o npx)
 	- cria o arquivo que vamos usar para configurar a conexão com o banco de dados
 - config/db.js
