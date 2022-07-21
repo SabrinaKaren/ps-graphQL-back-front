@@ -1,0 +1,9 @@
+type Query {
+    candidatos: [Candidato]
+}
+
+type Candidato {
+    id: String
+    nome: String
+    cpf: String
+}

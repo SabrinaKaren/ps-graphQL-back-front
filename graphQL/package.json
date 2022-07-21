@@ -11,8 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.10.0",
-    "graphql": "^14.2.1",
-    "graphql-import": "^0.7.1",
+    "graphql": "14.2.1",
+    "graphql-import": "0.7.1",
     "knex": "^2.2.0",
     "pg": "^8.7.3",
     "postgres": "^3.2.4"

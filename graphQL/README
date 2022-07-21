@@ -3,6 +3,7 @@
 -- *****************************************************
 - GraphQL: o que é, o que pode fazer, quando usar?
 - Termos: Apollo Server, Tipo, Resolver, Fragment, Mutation, Input, Migrate
+- types (.graphql ~ schemas) precisam de resolvers (.js ~ funções) para resolvê-la.
 
 -- *****************************************************
 -- *                        Passos                     *

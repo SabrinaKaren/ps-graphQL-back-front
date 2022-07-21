@@ -1,11 +1,12 @@
 const db = require('../config/db.js');
+const consts = require('../shared/consts');
 
 // status - insert
 const novoStatus = {
     nome: 'Teste'
 }
 
-db('status').insert(novoStatus)
+db(consts.statusTable).insert(novoStatus)
     .then(res => console.log('status inserido:', res))
     .catch(err => console.error(err))
     .finally(() => db.destroy());
@@ -15,7 +16,7 @@ const novoCandidato = {
     nome: 'Carlos Garcia'
 }
 
-db('candidato').insert(novoCandidato)
+db(consts.candidatoTable).insert(novoCandidato)
     .then(res => console.log('candidato inserido:', res))
     .catch(err => console.error(err))
     .finally(() => db.destroy());
