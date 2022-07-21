@@ -6,4 +6,10 @@ type Candidato {
     id: String
     nome: String
     cpf: String
+    email: String
+    dataNascimento: String
+    cidade: String
+    curriculo: String
+    linkRepositorio: String
+    status: String
 }

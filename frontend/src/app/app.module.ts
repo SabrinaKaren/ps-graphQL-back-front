@@ -9,7 +9,11 @@ import { PageCandidatesComponent } from './pages/candidates/page-candidates.comp
 import { PageEvaluationsComponent } from './pages/evaluations/page-evaluations.component';
 import { PageUnauthorizedComponent } from './pages/unauthorized/page-unauthorized.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache} from '@apollo/client/core';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,23 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GraphQLModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: (httpLink: HttpLink) => {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'http://localhost:4000',
+          }),
+        };
+      },
+      deps: [HttpLink],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

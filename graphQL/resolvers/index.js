@@ -3,8 +3,17 @@ const consts = require('../shared/consts');
 
 module.exports = {
     Query: {
-        async candidatos() {
-            return await db(consts.candidatoTable);
+        candidatos() {
+            return db(consts.candidatoTable)
+                .then(res => {
+                    res.map(item => {
+                        item.dataNascimento = item.data_nascimento;
+                        item.linkRepositorio = item.link_repositorio;
+                        delete item.data_nascimento;
+                        delete item.link_repositorio;
+                    });
+                    return res;
+                });
         }
     }
 }
