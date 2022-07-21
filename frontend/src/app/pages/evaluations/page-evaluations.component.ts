@@ -91,10 +91,13 @@ export class PageEvaluationsComponent implements OnInit {
     if (this.form.valid) {
 
       this.form.disable();
-      console.log(`Registrar candidato ${this.form.get('selectedCandidate')?.value} com status ${this.form.get('selectedStatus')?.value}.`);
 
-      of({}).pipe(delay(1000)).subscribe({
-        next: () => {
+      this.http.put(
+        'http://localhost:9000/api/candidate/status',
+        { candidateId: this.form.get('selectedCandidate')?.value, statusId: this.form.get('selectedStatus')?.value },
+        { responseType: 'text' }
+      ).subscribe({
+        next: (_) => {
           this.openSnackBar({
             message: 'Avaliação registrada com sucesso!',
             type: 'success',
