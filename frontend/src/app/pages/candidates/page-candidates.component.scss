@@ -13,10 +13,11 @@
     color: var(--secondary-color) !important;
 }
 
-.link-repositorio {
+.icon-link {
     color: var(--primary-color);
+    cursor: pointer;
 }
 
-.link-repositorio:hover {
+.icon-link:hover {
     color: var(--secondary-color);
 }

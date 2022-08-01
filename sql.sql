@@ -79,13 +79,13 @@ VALUES ('7b1cf9d7-3341-4d8d-b3d2-a529f52241a2', 'Reprovado', now());
 INSERT INTO candidato (id, nome, cpf, email, data_nascimento, cidade, curriculo, link_repositorio, status, updated_on)
 VALUES (
     '1b727c10-8c6e-46f1-ab12-f89ad27c0cfe',
-    'Sabrina',
-    '12719211621',
-    'sabrina@email.com',
+    'Vicente Gabriel',
+    '77298701002',
+    'vicente@email.com',
     '1996-04-21 12:00:00.016 -0300',
-    'Ipatinga',
-    'curriculo sabrina',
-    'https://github.com/SabrinaKaren',
+    'Guarapuava',
+    'https://github.com/SabrinaKaren/ps-graphQL-back-front/blob/main/assets/curriculo_pessoa1.pdf',
+    'https://github.com/SabrinaKaren/ps-graphQL-back-front',
     '03584644-7c4d-4422-ba7f-8710c1c3b0e4',
     now()
 );
@@ -93,13 +93,13 @@ VALUES (
 INSERT INTO candidato (id, nome, cpf, email, data_nascimento, cidade, curriculo, link_repositorio, status, updated_on)
 VALUES (
     'de098786-94d7-4d26-a89e-9a446e452880',
-    'Pedro',
-    '12345926678',
-    'pedro@email.com',
+    'Catarina Antonella',
+    '01174307498',
+    'catarina@email.com',
     '2000-07-16 12:00:00.016 -0300',
-    'São Paulo',
-    'curriculo pedro',
-    'https://github.com',
+    'Rio Verde',
+    'https://github.com/SabrinaKaren/ps-graphQL-back-front/blob/main/assets/curriculo_pessoa2.pdf',
+    'https://github.com/SabrinaKaren/graphQL-projects',
     '7b1cf9d7-3341-4d8d-b3d2-a529f52241a2',
     now()
 );

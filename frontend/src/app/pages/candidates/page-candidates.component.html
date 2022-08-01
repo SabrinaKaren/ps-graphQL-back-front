@@ -26,10 +26,14 @@
                                     <td>{{item.email ?? '-'}}</td>
                                     <td>{{item.dataNascimento ?? '-' | date : 'dd/MM/yyyy'}}</td>
                                     <td>{{item.cidade ?? '-'}}</td>
-                                    <td>{{item.curriculo ?? '-'}}</td>
                                     <td>
-                                        <a href={{item.linkRepositorio}} target="_blank" class="link-repositorio">
-                                            <mat-icon aria-hidden="false">open_in_new</mat-icon>
+                                        <a href={{item.curriculo}} target="_blank" class="icon-link">
+                                            <mat-icon aria-hidden="false">picture_as_pdf</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href={{item.linkRepositorio}} target="_blank" class="icon-link">
+                                            <mat-icon aria-hidden="false">code</mat-icon>
                                         </a>
                                     </td>
                                     <td>{{item.status ?? '-'}}</td>
