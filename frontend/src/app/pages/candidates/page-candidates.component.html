@@ -24,7 +24,7 @@
                                     <td>{{item.nome ?? '-'}}</td>
                                     <td>{{item.cpf ?? '-'}}</td>
                                     <td>{{item.email ?? '-'}}</td>
-                                    <td>{{item.dataNascimento ?? '-'}}</td>
+                                    <td>{{item.dataNascimento ?? '-' | date : 'dd/MM/yyyy'}}</td>
                                     <td>{{item.cidade ?? '-'}}</td>
                                     <td>{{item.curriculo ?? '-'}}</td>
                                     <td>

@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
@@ -17,7 +18,11 @@ export class PageCandidatesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getAllCandidates();
+    if (environment.apiType == 'graphql') this.getAllCandidatesGraphql();
+    else if (environment.apiType == 'rest') this.getAllCandidatesRest();
+  }
+
+  getAllCandidatesGraphql(): void {
     this.apollo
       .watchQuery({
         query: gql`
@@ -43,7 +48,7 @@ export class PageCandidatesComponent implements OnInit {
       });
   }
 
-  getAllCandidates(): void {
+  getAllCandidatesRest(): void {
     this.http.get('http://localhost:9000/api/candidate/all').subscribe({
       next: (response: any) => {
         this.data = response;
