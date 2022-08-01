@@ -14,14 +14,18 @@ export class AuthGuardPCService implements CanActivate {
   ) { }
 
   canActivate(): any {
-
     let userData = this.context.getUserData();
+
     if (userData) {
       const profile = userData.profile;
       if (profile == PROFILE_PC) return true;
-      else if (profile == PROFILE_AVALIADOR) this.router.navigate(['avaliacoes']);
+      else if (profile == PROFILE_AVALIADOR) {
+        this.router.navigate(['avaliacoes']);
+        return false;
+      }
     }
     this.router.navigate(['unauthorized']);
+    
     return false;
   }
 

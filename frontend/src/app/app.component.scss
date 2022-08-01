@@ -53,3 +53,17 @@
   left: 0;
   right: 0;
 }
+
+.content {
+  background-color: #A5A7B025;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

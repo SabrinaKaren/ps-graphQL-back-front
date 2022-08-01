@@ -1,5 +1,4 @@
 export const environment = {
   production: false,
-  apiType: 'graphql'
-  // apiType: 'rest'
+  apiType: 'rest' // rest | graphql
 };

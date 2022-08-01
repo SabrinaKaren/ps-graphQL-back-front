@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { AuthGuardPCService } from './shared/services/auth-guard-pc.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,7 @@ import { PageEvaluationsComponent } from './pages/evaluations/page-evaluations.c
 import { AuthGuardAvalService } from './shared/services/auth-guard-aval.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'candidatos', pathMatch: 'full' },
+  { path: '', component: AppComponent },
   { path: 'candidatos', component: PageCandidatesComponent, canActivate: [AuthGuardPCService] },
   { path: 'avaliacoes', component: PageEvaluationsComponent, canActivate: [AuthGuardAvalService] },
   { path: 'unauthorized', component: PageUnauthorizedComponent }

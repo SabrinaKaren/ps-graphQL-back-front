@@ -2,9 +2,9 @@ import { MapModel } from './../../shared/models/MapModel';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-page-evaluations',
@@ -48,10 +48,17 @@ export class PageEvaluationsComponent implements OnInit {
   }
 
   //******************************************************
-  //           Consultando e montando os selects
+  //    Consultando e montando o select de Candidatos
   //******************************************************
 
   getCandidates(): void {
+    if (environment.apiType == 'graphql') this.getCandidatesGraphql();
+    else if (environment.apiType == 'rest') this.getCandidatesRest();
+  }
+
+  getCandidatesGraphql(): void {}
+
+  getCandidatesRest(): void {
 
     this.http.get('http://localhost:9000/api/candidate/simplified').subscribe({
       next: (response: any) => {
@@ -67,7 +74,18 @@ export class PageEvaluationsComponent implements OnInit {
 
   }
 
+  //******************************************************
+  //      Consultando e montando o select de Status
+  //******************************************************
+
   getStatus(): void {
+    if (environment.apiType == 'graphql') this.getStatusGraphql();
+    else if (environment.apiType == 'rest') this.getStatusRest();
+  }
+
+  getStatusGraphql(): void {}
+
+  getStatusRest(): void {
 
     this.http.get('http://localhost:9000/api/status/simplified').subscribe({
       next: (response: any) => {
@@ -92,31 +110,8 @@ export class PageEvaluationsComponent implements OnInit {
 
       this.form.disable();
 
-      this.http.put(
-        'http://localhost:9000/api/candidate/status',
-        { candidateId: this.form.get('selectedCandidate')?.value, statusId: this.form.get('selectedStatus')?.value },
-        { responseType: 'text' }
-      ).subscribe({
-        next: (_) => {
-          this.openSnackBar({
-            message: 'Avaliação registrada com sucesso!',
-            type: 'success',
-            actionText: 'Finalizar',
-            duration: undefined
-          });
-          this.saved = true;
-        },
-        error: (err) => {
-          console.error(err);
-          this.openSnackBar({
-            message: 'Ocorreu um erro ao tentar registrar a avaliação!',
-            type: 'error',
-            actionText: undefined,
-            duration: 5000
-          });
-          this.form.enable();
-        }
-      });
+      if (environment.apiType == 'graphql') this.registerGraphql();
+      else if (environment.apiType == 'rest') this.registerRest();
 
     } else {
       this.openSnackBar({
@@ -126,6 +121,38 @@ export class PageEvaluationsComponent implements OnInit {
         duration: 5000
       });
     }
+  }
+
+  registerGraphql(): void {}
+
+  registerRest(): void {
+
+    this.http.put(
+      'http://localhost:9000/api/candidate/status',
+      { candidateId: this.form.get('selectedCandidate')?.value, statusId: this.form.get('selectedStatus')?.value },
+      { responseType: 'text' }
+    ).subscribe({
+      next: (_) => {
+        this.openSnackBar({
+          message: 'Avaliação registrada com sucesso!',
+          type: 'success',
+          actionText: 'Finalizar',
+          duration: undefined
+        });
+        this.saved = true;
+      },
+      error: (err) => {
+        console.error(err);
+        this.openSnackBar({
+          message: 'Ocorreu um erro ao tentar registrar a avaliação!',
+          type: 'error',
+          actionText: undefined,
+          duration: 5000
+        });
+        this.form.enable();
+      }
+    });
+
   }
 
   //******************************************************
