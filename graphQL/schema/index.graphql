@@ -1,6 +1,5 @@
 type Query {
     candidatos: [Candidato]
-    teste: String
 }
 
 type Candidato {

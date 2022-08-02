@@ -32,8 +32,10 @@ export class PageEvaluationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCandidates();
-    this.getStatus();
+    if (environment.apiType == 'rest') {
+      this.getCandidatesRest();
+      this.getStatusRest();
+    } else if (environment.apiType == 'graphql') this.getCandidatesAndStatusGraphql();
   }
 
   ngOnDestroy(): void {
@@ -48,15 +50,8 @@ export class PageEvaluationsComponent implements OnInit {
   }
 
   //******************************************************
-  //    Consultando e montando o select de Candidatos
+  //           Consultando e montando os selects
   //******************************************************
-
-  getCandidates(): void {
-    if (environment.apiType == 'graphql') this.getCandidatesGraphql();
-    else if (environment.apiType == 'rest') this.getCandidatesRest();
-  }
-
-  getCandidatesGraphql(): void {}
 
   getCandidatesRest(): void {
 
@@ -74,17 +69,6 @@ export class PageEvaluationsComponent implements OnInit {
 
   }
 
-  //******************************************************
-  //      Consultando e montando o select de Status
-  //******************************************************
-
-  getStatus(): void {
-    if (environment.apiType == 'graphql') this.getStatusGraphql();
-    else if (environment.apiType == 'rest') this.getStatusRest();
-  }
-
-  getStatusGraphql(): void {}
-
   getStatusRest(): void {
 
     this.http.get('http://localhost:9000/api/status/simplified').subscribe({
@@ -100,6 +84,8 @@ export class PageEvaluationsComponent implements OnInit {
     });
 
   }
+
+  getCandidatesAndStatusGraphql(): void {}
 
   //******************************************************
   //             Gravar registro de avaliação
@@ -122,8 +108,6 @@ export class PageEvaluationsComponent implements OnInit {
       });
     }
   }
-
-  registerGraphql(): void {}
 
   registerRest(): void {
 
@@ -154,6 +138,8 @@ export class PageEvaluationsComponent implements OnInit {
     });
 
   }
+
+  registerGraphql(): void {}
 
   //******************************************************
   //                Controles do SnackBar
