@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-page-evaluations',
@@ -26,7 +27,8 @@ export class PageEvaluationsComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private apollo: Apollo
   ) {
     this.form.disable();
   }
@@ -85,7 +87,38 @@ export class PageEvaluationsComponent implements OnInit {
 
   }
 
-  getCandidatesAndStatusGraphql(): void {}
+  getCandidatesAndStatusGraphql(): void {
+    this.apollo
+      .watchQuery({
+        query: gql`
+          {
+            statusList {
+              id
+              nome
+            }
+            candidatos {
+              id
+              nome
+            }
+          }
+        `,
+      })
+      .valueChanges.subscribe((result: any) => {
+        
+        // populando o select de candidato
+        this.candidatesList = result.data.candidatos.map((item: any) => {
+          return { key: item.id, value: item.nome }
+        });
+
+        // populando o select de status
+        this.statusList = result.data.statusList.map((item: any) => {
+          return { key: item.id, value: item.nome }
+        });
+
+        this.form.enable();
+
+      });
+  }
 
   //******************************************************
   //             Gravar registro de avaliação
@@ -139,7 +172,38 @@ export class PageEvaluationsComponent implements OnInit {
 
   }
 
-  registerGraphql(): void {}
+  registerGraphql(): void {
+    this.apollo
+      .mutate({
+        mutation: gql`
+          mutation Mutation($candidatoId: String, $statusId: String) {
+            registrarAvaliacao(candidatoId: $candidatoId, statusId: $statusId)
+          }
+        `,
+        variables: { candidatoId: this.form.get('selectedCandidate')?.value, statusId: this.form.get('selectedStatus')?.value }
+      })
+      .subscribe({
+        next: (_) => {
+          this.openSnackBar({
+            message: 'Avaliação registrada com sucesso!',
+            type: 'success',
+            actionText: 'Finalizar',
+            duration: undefined
+          });
+          this.saved = true;
+        },
+        error: (error) => {
+          console.error(error);
+          this.openSnackBar({
+            message: 'Ocorreu um erro ao tentar registrar a avaliação!',
+            type: 'error',
+            actionText: undefined,
+            duration: 5000
+          });
+          this.form.enable();
+        }
+    })
+  }
 
   //******************************************************
   //                Controles do SnackBar

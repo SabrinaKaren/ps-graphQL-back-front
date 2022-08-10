@@ -1,5 +1,15 @@
 type Query {
     candidatos: [Candidato]
+    statusList: [Status]
+}
+
+type Mutation {
+    registrarAvaliacao(candidatoId: String, statusId: String): Boolean
+}
+
+type Status {
+    id: String
+    nome: String
 }
 
 type Candidato {

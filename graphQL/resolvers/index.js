@@ -2,7 +2,39 @@ const db = require('../config/db');
 const consts = require('../shared/consts');
 
 module.exports = {
+
+    Mutation: {
+        async registrarAvaliacao(_, props) {
+
+            const { candidatoId, statusId } = props;
+
+            const candidato = await db(consts.candidatoTable)
+                .where({ id: candidatoId })
+                .first();
+
+            const status = await db(consts.statusTable)
+                .where({ id: statusId })
+                .first();
+            
+            if (candidato && status) {
+
+                candidato.status = statusId;
+                const updated = await db(consts.candidatoTable)
+                    .where({ id: candidatoId })
+                    .update(candidato);
+                
+                console.log(updated);
+
+            }
+
+        }
+    },
+
     Query: {
+        statusList() {
+            return db(consts.statusTable)
+                .then(res => res);
+        },
         candidatos() {
             return db.select('s.nome as status_nome')
                 .select('c.id as candidato_id')
@@ -25,4 +57,5 @@ module.exports = {
                 });
         }
     }
+
 }
