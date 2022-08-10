@@ -19,12 +19,14 @@ module.exports = {
             if (candidato && status) {
 
                 candidato.status = statusId;
-                const updated = await db(consts.candidatoTable)
+                await db(consts.candidatoTable)
                     .where({ id: candidatoId })
                     .update(candidato);
-                
-                console.log(updated);
 
+                return 'Registro de avaliação realizado com sucesso!';
+
+            } else {
+                return '400-Status ou Candidato não encontrado!';
             }
 
         }
